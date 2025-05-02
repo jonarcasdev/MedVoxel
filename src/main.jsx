@@ -8,7 +8,7 @@ import NotFound from './pages/not-found/NotFound.jsx'
 import Enfermedades from './pages/Enfermedades/Enfermedades.jsx'
 import Trombosis from './pages/Enfermedades/Trombosis/Trombosis.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
-import Layout from './layout/layout.jsx'
+import Layout from './layout/Layout.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
