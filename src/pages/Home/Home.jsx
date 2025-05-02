@@ -28,9 +28,9 @@ const Home = () => {
                     <h1 className="enfermedades-title">Enfermedades</h1>
                     <div className="enfermedades-grid">
                         <div className="card">
-                            <h2>Enfermedad 1</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <button className="card-button">Saber más</button>
+                            <h2>Trombosis</h2>
+                            <p>Formación de un coágulo de sangre dentro de un vaso sanguíneo.</p>
+                            <button className="card-button"  onClick={()=>navigate("/enfermedades/trombosis")}>Saber más</button>
                         </div>
                         <div className="card">
                             <h2>Enfermedad 2</h2>
