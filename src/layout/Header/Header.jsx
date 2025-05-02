@@ -3,7 +3,10 @@ import "./Header.css";
 
 const Header = () => {
     return (
-        <header>
+        <header className="Header">
+            <a href="/">
+                <p className="logo">MEDVOXEL</p>
+            </a>
             <nav>
                 <NavLink to="/" end>
                     Inicio
@@ -15,8 +18,9 @@ const Header = () => {
                     Quiz
                 </NavLink>
                 <NavLink to="/about" end>
-                    Acerca de nosotros
+                    Sobre nosotros
                 </NavLink>
+                
             </nav>
         </header>
     );

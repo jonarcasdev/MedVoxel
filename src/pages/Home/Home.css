@@ -1,0 +1,117 @@
+.home {
+    background: linear-gradient(90deg, #000000 0%, #FC0848 100%);
+    width: 1521pxpx;
+    height: 100px;
+    margin-top: 0px;
+    
+}
+
+.cuadro {
+    background-color: #476C8B; /* Color de fondo */
+    width: 1521px; /* Ancho del cuadro */
+    height: 900px; /* Alto del cuadro */
+    color: #ffffff; /* Color del texto dentro del cuadro */
+    font-size: 18px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    margin-top: 95px;
+
+}
+
+.cuadro2 {
+    background-color: #FC0848; /* Color de fondo */
+    width: 1521px; /* Ancho del cuadro */
+    height: 768px; /* Alto del cuadro */
+    color: #ffffff; /* Color del texto dentro del cuadro */
+    font-size: 18px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    position: relative;
+    overflow: hidden;   
+    margin-top: 0px;
+
+}
+
+.virus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 1200px;
+    height: auto;
+    pointer-events: none;
+}
+
+.inicio{
+    margin-top: 400px;
+}
+
+.buttom-inicio{
+    background-color: #FC0848;
+}
+.buttom-inicio:hover {
+    background-color: #d0073a;
+}
+
+
+
+
+
+
+.enfermedades-container {
+    position: relative;
+    z-index: 2;
+}
+
+
+.enfermedades-title {
+    font-size: 48px;
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+
+.enfermedades-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    justify-items: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+
+.card h2 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+
+.card-button {
+    background-color: #fc0848;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+    background-color: #d0073a;
+}

@@ -7,10 +7,10 @@ const Enfermedades = () => {
     const userData=location.state?.userData;
 
     return (
-    <div>
-        <h1>Enfermedades del corazon</h1>
+    <div className="Enfermedades">
+        <h1 >Enfermedades</h1>
         <p>{userData?.displayName}</p>
-        <Outlet />
+        <Outlet /> 
     </div>
     )
     
