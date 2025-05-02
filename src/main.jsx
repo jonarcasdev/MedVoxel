@@ -9,6 +9,8 @@ import Enfermedades from './pages/Enfermedades/Enfermedades.jsx'
 import Trombosis from './pages/Enfermedades/Trombosis/Trombosis.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Layout from './layout/Layout.jsx'
+import Login from './pages/Crud/Login/Login.jsx'
+import Register from './pages/Crud/Register/Register.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -20,6 +22,10 @@ createRoot(document.getElementById('root')).render(
           <Route path='/enfermedades/trombosis' element={<Trombosis />} />
         </Route>
         <Route path='/about' element={<About />} />
+
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Layout>

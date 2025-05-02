@@ -1,0 +1,38 @@
+header {
+    background: linear-gradient(90deg, #000000 0%, #FC0848 100%);
+    width: 1521px; /* Asegura que ocupe todo el ancho */
+    height: 100px;
+    display: flex; /* Usa flexbox para alinear los elementos */
+    align-items: center; /* Centra verticalmente */
+    justify-content: space-between; /* Espacia los elementos */
+    margin: 0; /* Elimina cualquier margen adicional */
+    padding: 0 20px; /* Mantén solo el padding lateral */
+    box-sizing: border-box;
+    font-family: "League Spartan", sans-serif;
+}
+    
+
+
+.logo {
+    font-size: 50px; /* Ajusta el tamaño del texto */
+    font-weight: bold; /* Haz el texto más grueso */
+    color: #ffffff; /* Cambia el color del texto */
+    margin: 0; /* Elimina márgenes adicionales */
+    font-family: "Jersey 25", sans-serif;
+}
+
+nav {
+    display: flex; /* Usa flexbox para alinear los enlaces */
+    gap: 20px; /* Espacia los enlaces */
+}
+
+nav a {
+    font-size: 18px; /* Ajusta el tamaño del texto */
+    font-weight: 500; /* Haz el texto semi-grueso */
+    color: #ffffff; /* Cambia el color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+nav a:hover {
+    color: #ffcccc; /* Cambia el color al pasar el mouse */
+}
