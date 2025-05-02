@@ -3,6 +3,7 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100%;
+    height: 100vh;
   }
   
   .layout-content {
@@ -13,5 +14,12 @@
     justify-content: center;
     text-align: center;
     width: 100%;
+    height: 100vh;
     flex: 1;
   }
+
+  canvas {
+    width: 100%;
+    height: 100%;
+    display: block; /* Elimina el espacio extra que podría agregar el canvas */
+}

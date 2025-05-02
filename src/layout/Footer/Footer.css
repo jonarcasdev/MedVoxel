@@ -4,10 +4,11 @@
     color: #ffffff;
     padding: 40px 20px;
     font-family: "League Spartan", sans-serif;
+    width: 100%;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
 .footer-container {
-    max-width: 1200px;
     margin: 0 auto;
 
 }

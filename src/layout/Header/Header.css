@@ -1,6 +1,6 @@
 header {
     background: linear-gradient(90deg, #000000 0%, #FC0848 100%);
-    width: 1521px; /* Asegura que ocupe todo el ancho */
+    width:100%; /* Asegura que ocupe todo el ancho */
     height: 100px;
     display: flex; /* Usa flexbox para alinear los elementos */
     align-items: center; /* Centra verticalmente */
