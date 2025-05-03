@@ -115,3 +115,28 @@
 .card-button:hover {
     background-color: #d0073a;
 }
+
+
+
+.scroll-button {
+    background-color: #FC0848;
+    color: #ffffff;
+    border: none; /* Elimina el borde */
+    outline: none; /* Elimina el borde al hacer clic */
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    box-shadow: none; /* Elimina cualquier sombra */
+}
+
+.scroll-button:focus {
+    outline: none; /* Elimina el contorno de enfoque */
+    box-shadow: none; /* Elimina cualquier sombra de enfoque */
+}
+
+.scroll-button:hover {
+    background-color: #d0073a;
+}

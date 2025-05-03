@@ -1,14 +1,24 @@
+/* Tamaño inicial del header */
 header {
     background: linear-gradient(90deg, #000000 0%, #FC0848 100%);
-    width:100%; /* Asegura que ocupe todo el ancho */
-    height: 100px;
-    display: flex; /* Usa flexbox para alinear los elementos */
-    align-items: center; /* Centra verticalmente */
-    justify-content: space-between; /* Espacia los elementos */
-    margin: 0; /* Elimina cualquier margen adicional */
-    padding: 0 20px; /* Mantén solo el padding lateral */
+    width: 100%;
+    height: 100px; /* Tamaño inicial más grande */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
     box-sizing: border-box;
     font-family: "League Spartan", sans-serif;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    transition: height 0.3s ease, background-color 0.3s ease; /* Transición suave */
+}
+
+/* Tamaño reducido del header */
+header.scrolled {
+    height: 55px; /* Tamaño reducido */
+    background: linear-gradient(90deg, #000000 0%, #FC0848 100%); /* Cambia el fondo opcionalmente */
 }
     
 
@@ -35,4 +45,44 @@ nav a {
 
 nav a:hover {
     color: #ffcccc; /* Cambia el color al pasar el mouse */
+}
+
+
+/* Estilo del contenedor del menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Estilo del menú desplegable */
+.dropdown-menu {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 100%; /* Aparece debajo del enlace */
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px 0;
+    z-index: 20;
+}
+
+/* Estilo de los enlaces dentro del menú */
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #333333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Cambia el color al pasar el mouse */
+.dropdown-menu a:hover {
+    background-color: #f5f5f5;
+}
+
+/* Mostrar el menú al pasar el mouse sobre el contenedor */
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
