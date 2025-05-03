@@ -1,4 +1,4 @@
-import  { useRef,useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
 const Heart1 = (props) => {
@@ -6,10 +6,13 @@ const Heart1 = (props) => {
     const { nodes, materials, animations } = useGLTF("/models-3d/Heart.glb");
     const { actions } = useAnimations(animations, group);
 
-
-
-
-    
+    // Inicia la animación al montar el componente
+    useEffect(() => {
+        if (actions) {
+            // Reproduce todas las animaciones disponibles
+            Object.values(actions).forEach((action) => action.play());
+        }
+    }, [actions]);
 
     return (
         <group ref={group} {...props} dispose={null}>
