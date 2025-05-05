@@ -71,9 +71,18 @@ const Home = () => {
                                 <button className="card-button">Saber más</button>
                             </div>
                             <div className="card">
-                                <h2>Enfermedad 4</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <button className="card-button">Saber más</button>
+                                <h2>Hipertension </h2>
+                                <p>es una condición médica donde la fuerza de la sangre contra 
+                                    las paredes de las arterias es constantemente demasiado alta</p>
+                                    <button
+                                    className="card-button"
+                                    onClick={() => {
+                                        window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba
+                                        navigate("/enfermedades/hipertension"); // Navega a la nueva página
+                                    }}
+                                >
+                                    Saber más
+                                </button>
                             </div>
                         </div>
                     </div>
