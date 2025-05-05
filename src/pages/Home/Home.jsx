@@ -31,17 +31,17 @@ const Home = () => {
 
             <div className="inicio">
                 <h2>¿Sabes cuales son las enfermedades del corazon?</h2>
-{/* <button className="buttom-inicio" onClick={handleClick}>
+                {/* <button className="buttom-inicio" onClick={handleClick}>
     Ver enfermedades
 </button> */}
                 <button className="scroll-button" onClick={scrollToEnfermedades}>
                     Leer más
                 </button>
                 <div className="cuadro" ref={enfermedadesRef}>
-                <button className="scroll-button" onClick={scrollToEnfermedades1}>
-                    Leer más
-                    
-                </button>
+                    <button className="scroll-button" onClick={scrollToEnfermedades1}>
+                        Leer más
+
+                    </button>
                 </div>
                 <div className="cuadro2" ref={enfermedadesRef1}>
                     <div className="enfermedades-container">
@@ -52,7 +52,10 @@ const Home = () => {
                                 <p>Formación de un coágulo de sangre dentro de un vaso sanguíneo.</p>
                                 <button
                                     className="card-button"
-                                    onClick={() => navigate("/enfermedades/trombosis")}
+                                    onClick={() => {
+                                        window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba
+                                        navigate("/enfermedades/trombosis"); // Navega a la nueva página
+                                    }}
                                 >
                                     Saber más
                                 </button>
