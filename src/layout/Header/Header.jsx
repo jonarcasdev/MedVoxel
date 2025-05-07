@@ -32,7 +32,7 @@ const Header = () => {
                         <a href="/enfermedades/trombosis">Trombosis</a>
                         <a href="/enfermedades/respiratorias">Respiratorias</a>
                         <a href="/enfermedades/infecciosas">Infecciosas</a>
-                        <a href="/enfermedades/mentales">Mentales</a>
+                        <a href="/enfermedades/hipertension">Hipertension</a>
                     </div>
                 </div>
                 <a href="/quiz">Quiz</a>
