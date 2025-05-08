@@ -7,7 +7,7 @@
 }
 
 .cuadro {
-    background-color: #476C8B; /* Color de fondo */
+    background-color: #302f2f; /* Color de fondo */
     width: 100%; /* Ancho del cuadro */
     height: 900px; /* Alto del cuadro */
     color: #ffffff; /* Color del texto dentro del cuadro */
@@ -60,6 +60,9 @@
 .enfermedades-container {
     position: relative;
     z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 
@@ -73,18 +76,36 @@
 
 .enfermedades-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    position: relative;
+    padding: 20px;
+    margin-top: 150px;
 }
 
 .card {
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;
-    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    transform-origin: center;
+}
+
+
+.card:hover {
+    transform: scale(1.1); /* Hace la tarjeta más grande */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 2; /* Asegura que la tarjeta ampliada esté por encima de otras */
+    margin: 0 auto; /* Ayuda a centrar la tarjeta */
+    cursor: pointer;
+}
+
+.enfermedades-grid:hover .card:not(:hover) {
+    transform: scale(0.95); /* Reduce ligeramente las otras tarjetas */
+    opacity: 0.8; /* Opcional: Reduce la opacidad de las tarjetas no seleccionadas */
 }
 
 
@@ -139,4 +160,86 @@
 
 .scroll-button:hover {
     background-color: #d0073a;
+}
+
+
+
+/* Animación para la imagen del virus */
+@keyframes float {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(-52%, -48%) rotate(2deg) scale(1.01);
+  }
+  50% {
+    transform: translate(-50%, -52%) rotate(0deg) scale(1.02);
+  }
+  75% {
+    transform: translate(-48%, -50%) rotate(-2deg) scale(1.01);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+}
+
+.virus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 1200px;
+    height: auto;
+    pointer-events: none;
+    animation: float 8s ease-in-out infinite; /* Aplica la animación */
+}
+
+/* Para añadir múltiples virus con movimientos independientes */
+.virus-small {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: 1;
+    pointer-events: none;
+    animation: float-alt 6s ease-in-out infinite;
+}
+
+.virus-small:nth-child(1) {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0.5s;
+}
+
+.virus-small:nth-child(2) {
+    top: 20%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.virus-small:nth-child(3) {
+    bottom: 15%;
+    left: 20%;
+    animation-delay: 1.5s;
+}
+
+.virus-small:nth-child(4) {
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+@keyframes float-alt {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(10px, 15px) rotate(10deg);
+  }
+  66% {
+    transform: translate(-10px, 5px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }

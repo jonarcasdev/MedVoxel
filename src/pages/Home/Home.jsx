@@ -72,9 +72,9 @@ const Home = () => {
                             </div>
                             <div className="card">
                                 <h2>Hipertension </h2>
-                                <p>es una condición médica donde la fuerza de la sangre contra 
+                                <p>es una condición médica donde la fuerza de la sangre contra
                                     las paredes de las arterias es constantemente demasiado alta</p>
-                                    <button
+                                <button
                                     className="card-button"
                                     onClick={() => {
                                         window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba
