@@ -1,7 +1,10 @@
 import { Link } from "react-router";
 import "./Footer.css";
 
-import "./Footer.css";
+import tiktokIcon from '../../assets/icons/icons8-tik-tok.svg';
+import instagramIcon from '../../assets/icons/icons8-instagram.svg';
+import facebookIcon from '../../assets/icons/icons8-facebook.svg';
+
 
 const Footer = () => {
     return (
@@ -19,22 +22,35 @@ const Footer = () => {
                     <div className="footer-column">
                         <h3>Enfermedades</h3>
                         <ul>
-                            <li><Link to="/enfermedades/trombosis">Trombosis</Link></li>
-                            <li>Síntomas</li>
-                            <li>Causas</li>
-                            <li>Tratamiento</li>
-                            <li>Enfermedad 2</li>
-                            <li>Síntomas</li>
-                            <li>Causas</li>
-                            <li>Tratamiento</li>
-                            <li>Enfermedad 3</li>
-                            <li>Síntomas</li>
-                            <li>Causas</li>
-                            <li>Tratamiento</li>
-                            <li>Enfermedad 4</li>
-                            <li>Síntomas</li>
-                            <li>Causas</li>
-                            <li>Tratamiento</li>
+                            <li>
+                                <Link
+                                    to="/enfermedades/trombosis"
+                                    onClick={(e) => {
+                                        e.preventDefault(); // Previene la navegación inmediata
+                                        window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba
+                                        setTimeout(() => {
+                                            window.location.href = "/enfermedades/trombosis"; // Navega después del desplazamiento
+                                        }, 500); // Pequeño retraso para que se complete el scroll
+                                    }}
+                                >
+                                    Trombosis
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/enfermedades/hipertension"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        window.scrollTo({ top: 0, behavior: "smooth" });
+                                        setTimeout(() => {
+                                            window.location.href = "/enfermedades/hipertension";
+                                        }, 500);
+                                    }}
+                                >
+                                    Hipertension
+                                </Link>
+                            </li>
+
                         </ul>
                     </div>
                     <div className="footer-column">
@@ -52,11 +68,17 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p>© Derechos reservados</p>
+                    <li>© Derechos reservados</li>
                     <div className="footer-icons">
-                        <i className="icon">TikTok</i>
-                        <i className="icon">Instagram</i>
-                        <i className="icon">Facebook</i>
+                        <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="icon-link">
+                            <img src={tiktokIcon} alt="TikTok" className="social-icon" />
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="icon-link">
+                            <img src={instagramIcon} alt="Instagram" className="social-icon" />
+                        </a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="icon-link">
+                            <img src={facebookIcon} alt="Facebook" className="social-icon" />
+                        </a>
                     </div>
                 </div>
             </div>
