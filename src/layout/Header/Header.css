@@ -37,14 +37,33 @@ nav {
 }
 
 nav a {
-    font-size: 18px; /* Ajusta el tamaño del texto */
-    font-weight: 500; /* Haz el texto semi-grueso */
-    color: #ffffff; /* Cambia el color del texto */
-    text-decoration: none; /* Elimina el subrayado */
+    position: relative; /* Asegúrate de que esta propiedad esté presente */
+    font-size: 21px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block; /* Para que el ancho se ajuste al texto */
 }
 
 nav a:hover {
-    color: #ffcccc; /* Cambia el color al pasar el mouse */
+    color: #e1e1e1; /* Cambia el color al pasar el mouse */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0; /* Comienza desde la izquierda */
+    right: 0; /* Termina en la derecha */
+    margin: 0 auto; /* Centra la línea */
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%; /* La línea ocupa todo el ancho al hacer hover */
 }
 
 
@@ -79,10 +98,42 @@ nav a:hover {
 
 /* Cambia el color al pasar el mouse */
 .dropdown-menu a:hover {
-    background-color: #f5f5f5;
+    color: #FC0848;
 }
 
 /* Mostrar el menú al pasar el mouse sobre el contenedor */
 .dropdown:hover .dropdown-menu {
     display: block;
+}
+
+/* Estilo para los enlaces dentro del dropdown menu */
+.dropdown-menu a {
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+    color: #333; /* Color del texto dentro del dropdown */
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    color: #FC0848; /* Cambia el color al pasar el mouse */
+}
+
+/* Efecto de línea que se expande al hacer hover */
+.dropdown-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px; /* Posición ajustada para el dropdown */
+    left: 0; /* Comienza desde la izquierda */
+    right: 0; /* Termina en la derecha */
+    margin: 0 auto; /* Centra la línea */
+    background-color: #FC0848; /* Color que combine con tu tema */
+    transition: width 0.3s ease;
+}
+
+.dropdown-menu a:hover::after {
+    width: 80%; /* La línea ocupa el 80% del ancho al hacer hover */
 }
