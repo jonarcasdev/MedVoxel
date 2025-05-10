@@ -52,20 +52,6 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link
-                                    to="/enfermedades/arritmia"
-                                    onClick={(e) => {
-                                        e.preventDefault(); 
-                                        window.scrollTo({ top: 0, behavior: "smooth" }); 
-                                        setTimeout(() => {
-                                            window.location.href = "/enfermedades/arritmia";
-                                        }, 500);
-                                    }}
-                                >
-                                    Arritmia
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
                                     to="/enfermedades/hipertension"
                                     onClick={(e) => {
                                         e.preventDefault();
