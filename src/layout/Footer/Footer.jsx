@@ -38,6 +38,20 @@ const Footer = () => {
                             </li>
                             <li>
                                 <Link
+                                    to="/enfermedades/tumor_cardiaco"
+                                    onClick={(e) => {
+                                        e.preventDefault(); 
+                                        window.scrollTo({ top: 0, behavior: "smooth" }); 
+                                        setTimeout(() => {
+                                            window.location.href = "/enfermedades/tumor_cardiaco";
+                                        }, 500);
+                                    }}
+                                >
+                                    Tumor cardiaco
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     to="/enfermedades/hipertension"
                                     onClick={(e) => {
                                         e.preventDefault();

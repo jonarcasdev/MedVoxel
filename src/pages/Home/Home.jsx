@@ -61,9 +61,18 @@ const Home = () => {
                                 </button>
                             </div>
                             <div className="card">
-                                <h2>Enfermedad 2</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <button className="card-button">Saber más</button>
+                                <h2>Tumor cardiaco en mixoma auricular</h2>
+                                <p>El mixoma auricular es el tumor cardíaco primario más común en adultos, 
+                                    y suele localizarse en la aurícula izquierda.</p>
+                                <button
+                                    className="card-button"
+                                    onClick={() => {
+                                        window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba
+                                        navigate("/enfermedades/tumor_cardiaco"); // Navega a la nueva página
+                                    }}
+                                >
+                                    Saber más
+                                </button>
                             </div>
                             <div className="card">
                                 <h2>Enfermedad 3</h2>

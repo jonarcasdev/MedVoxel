@@ -30,7 +30,7 @@ const Header = () => {
                     <a href="/enfermedades" className="dropdown-toggle">Enfermedades</a>
                     <div className="dropdown-menu">
                         <a href="/enfermedades/trombosis">Trombosis</a>
-                        <a href="/enfermedades/respiratorias">Respiratorias</a>
+                        <a href="/enfermedades/tumor_cardiaco">Tumor Cardiaco</a>
                         <a href="/enfermedades/infecciosas">Infecciosas</a>
                         <a href="/enfermedades/hipertension">Hipertension</a>
                     </div>
