@@ -1,7 +1,14 @@
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useNavigate } from "react-router";
 import { useCallback, useRef } from "react";
 import "./Home.css";
 import VirusImage from "../../assets/Virus.svg";
+
+function HeartModel() {
+    const { scene } = useGLTF("/models-3d/Heartprincipal.glb");
+    return <primitive object={scene} scale={1.5} position={[0, -1, 0]} />;
+}
 
 const Home = () => {
     const navigate = useNavigate();
@@ -27,7 +34,17 @@ const Home = () => {
 
     return (
         <div className="home">
-            <h1 className="title">El Corazon</h1>
+            <h1 className="title">El Corazón</h1>
+
+            {/* 🎯 MODELO 3D */}
+            <div className="canvas-container">
+                <Canvas camera={{ position: [0, 0, 5] }}>
+                    <ambientLight intensity={0.5} />
+                    <directionalLight position={[5, 5, 5]} />
+                    <OrbitControls />
+                    <HeartModel />
+                </Canvas>
+            </div>
 
             <div className="inicio">
                 <h2>¿Sabes cuales son las enfermedades del corazon?</h2>
@@ -75,9 +92,20 @@ const Home = () => {
                                 </button>
                             </div>
                             <div className="card">
-                                <h2>Enfermedad 3</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <button className="card-button">Saber más</button>
+                                <h2>Arritmia</h2>
+                                <p>Es una alteración del ritmo cardíaco que puede provocar latidos irregulares,
+                                demasiado rápidos o demasiado lentos. Puede causar síntomas como palpitaciones,
+                                mareos, fatiga o incluso desmayos.
+                                </p>
+                                <button
+                                    className="card-button"
+                                    onClick={() => {
+                                        window.scrollTo({ top: 0, behavior: "smooth" }); // Desplaza hacia arriba
+                                        navigate("/enfermedades/arritmia"); // Navega a la nueva página
+                                    }}
+                                >
+                                    Saber más
+                                </button>
                             </div>
                             <div className="card">
                                 <h2>Hipertension </h2>
