@@ -13,6 +13,5 @@ const Enfermedades = () => {
         <Outlet /> 
     </div>
     )
-    
 }
 export default Enfermedades;
