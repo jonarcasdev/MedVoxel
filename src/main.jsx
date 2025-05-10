@@ -13,7 +13,6 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import Layout from './layout/Layout.jsx'
 import Login from './pages/Crud/Login/Login.jsx'
 import Register from './pages/Crud/Register/Register.jsx'
-import Arritmia from './pages/Enfermedades/Arritmia/Arritmia.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -25,7 +24,6 @@ createRoot(document.getElementById('root')).render(
           <Route path='/enfermedades/trombosis' element={<Trombosis />} />
           <Route path='/enfermedades/hipertension' element={<Hipertension />} />
           <Route path='/enfermedades/tumor_cardiaco' element={<Tumor_cardiaco />} />
-          <Route path='/enfermedades/arritmia' element={<Arritmia />} />
         </Route>
         <Route path='/about' element={<About />} />
 
