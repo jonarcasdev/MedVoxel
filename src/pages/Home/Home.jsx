@@ -35,6 +35,14 @@ const Home = () => {
     return (
         <div className="home">
             <h1 className="title">El Corazón</h1>
+            <div className="bienvenida">
+                <h2>Bienvenido a nuestra plataforma educativa sobre el corazón</h2>
+                     <p>
+                            Aquí podrás explorar un modelo 3D del corazón humano y conocer las enfermedades más comunes que lo afectan.
+                            Aprende, explora y cuida tu salud.
+                     </p>
+            </div>
+
 
             {/* 🎯 MODELO 3D */}
             <div className="canvas-container">
