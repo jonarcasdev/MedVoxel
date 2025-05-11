@@ -51,15 +51,10 @@ const Home = () => {
                 {/* <button className="buttom-inicio" onClick={handleClick}>
     Ver enfermedades
 </button> */}
-                <button className="scroll-button" onClick={scrollToEnfermedades}>
+                <button className="scroll-button" onClick={scrollToEnfermedades1}>
                     Leer más
                 </button>
-                <div className="cuadro" ref={enfermedadesRef}>
-                    <button className="scroll-button" onClick={scrollToEnfermedades1}>
-                        Leer más
-
-                    </button>
-                </div>
+               
                 <div className="cuadro2" ref={enfermedadesRef1}>
                     <div className="enfermedades-container">
                         <h1 className="enfermedades-title">Enfermedades</h1>
