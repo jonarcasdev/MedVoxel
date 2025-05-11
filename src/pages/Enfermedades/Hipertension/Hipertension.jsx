@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useRef, useState } from "react";
 import Heart2 from "../../models3d/Heart2";
+import Lights2 from "../../../lights/lights2";
 
 const Hipertension = () => {
     // Referencia para la sección a la que se desplazará
@@ -53,6 +54,7 @@ const Hipertension = () => {
                 style={{ height: "420px" }} // Adjust the height here
                 onClick={manejarClick}
             >
+                <Lights2 />
                 <OrbitControls enableZoom={true} />
                 <ambientLight intensity={0.7} />
                 <directionalLight position={[5, 5, 10]} intensity={1} />
