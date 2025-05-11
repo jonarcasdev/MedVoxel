@@ -12,6 +12,12 @@
     font-family: 'Poppins', sans-serif;
     color: #333;
   }
+
+  .canvas-container {
+    width: 100%;
+    height: 500px; /* Ajusta este valor a lo que necesites */
+    background-color: white; /* Si deseas cambiarlo o eliminarlo */
+}
   
   /* Estilo del título */
   .arritmia-title {

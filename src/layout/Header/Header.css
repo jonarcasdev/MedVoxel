@@ -21,6 +21,19 @@ header.scrolled {
     background: linear-gradient(90deg, #000000 0%, #FC0848 100%); /* Cambia el fondo opcionalmente */
 }
     
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%; /* Ocupa toda la altura del header */
+}
+
+.logo-img {
+    height: 200px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 0.6));
+}
+
 
 
 .logo {

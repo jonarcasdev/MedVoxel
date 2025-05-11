@@ -23,7 +23,9 @@ const Header = () => {
 
     return (
         <header>
-            <div className="logo">MEDVOXEL</div>
+            <div className="logo">
+                <img src="/Logo/Medvoxel-Logo.png" alt="Medvoxel Logo" className="logo-img" />
+            </div>
             <nav>
                 <a href="/">Inicio</a>
                 <div className="dropdown">
