@@ -38,45 +38,61 @@ const Trombosis = () => {
                 Leer más
             </button>
             {/* Sección a la que se desplazará */}
-            <div className="cuadro2" ref={leerMas}>
-                <p>🧠 ¿Qué es?
-                    Es la formación de un coágulo dentro de una arteria del corazón, bloqueando parcial o totalmente el flujo sanguíneo al miocardio (músculo cardíaco). Generalmente ocurre en arterias ya afectadas por aterosclerosis (acumulación de placas de grasa).
+           <div className="cuadro2" ref={leerMas}>
+    <div className="trombosis-container">
+        <section className="trombosis-section">
+            <h2 className="section-title">🧠 ¿Qué es?</h2>
+            <p className="section-content">
+                Es la formación de un coágulo dentro de una arteria del corazón, bloqueando parcial o totalmente el flujo sanguíneo al miocardio (músculo cardíaco). Generalmente ocurre en arterias ya afectadas por aterosclerosis (acumulación de placas de grasa).
+            </p>
+        </section>
 
-                    ⚠️ Causas
-                    Las causas más comunes incluyen:
+        <section className="trombosis-section">
+            <h2 className="section-title">⚠️ Causas</h2>
+            <p className="section-subtitle">Las causas más comunes incluyen:</p>
+            <ul className="causes-list">
+                <li><strong>Aterosclerosis:</strong> Placas de colesterol se acumulan en las arterias y pueden romperse, lo que activa la coagulación.</li>
+                <li><strong>Hipertensión arterial:</strong> Daña las paredes de las arterias, facilitando la formación de trombos.</li>
+                <li><strong>Colesterol alto y triglicéridos altos</strong></li>
+                <li><strong>Tabaquismo</strong></li>
+                <li><strong>Diabetes mellitus</strong></li>
+                <li><strong>Obesidad y sedentarismo</strong></li>
+                <li><strong>Estrés crónico</strong></li>
+                <li><strong>Factores genéticos</strong></li>
+            </ul>
+        </section>
 
-                    Aterosclerosis: Placas de colesterol se acumulan en las arterias y pueden romperse, lo que activa la coagulación.
-
-                    Hipertensión arterial: Daña las paredes de las arterias, facilitando la formación de trombos.
-
-                    Colesterol alto y triglicéridos altos
-
-                    Tabaquismo
-
-                    Diabetes mellitus
-
-                    Obesidad y sedentarismo
-
-                    Estrés crónico
-
-                    Factores genéticos
-
-                    🩺 Efectos en el cuerpo humano
-                    Infarto agudo de miocardio (ataque al corazón)
-                    Si el trombo bloquea completamente una arteria, el tejido cardíaco que depende de ese flujo comienza a morir por falta de oxígeno.
-
-                    Dolor torácico intenso (angina de pecho o dolor de infarto)
-                    Sensación de opresión en el pecho, que puede irradiarse al brazo izquierdo, mandíbula o espalda.
-
-                    Arritmias
-                    El daño al tejido cardíaco puede alterar el ritmo normal del corazón, causando latidos irregulares o incluso paro cardíaco.
-
-                    Falla cardíaca
-                    Si una parte del corazón queda dañada de forma permanente, el músculo puede debilitarse y no bombear bien la sangre.
-
-                    Muerte súbita
-                    En casos severos, la trombosis coronaria puede llevar a una parada cardíaca inmediata.</p>
+        <section className="trombosis-section">
+            <h2 className="section-title">🩺 Efectos en el cuerpo humano</h2>
+            <div className="effects-container">
+                <div className="effect-item">
+                    <h3>Infarto agudo de miocardio (ataque al corazón)</h3>
+                    <p>Si el trombo bloquea completamente una arteria, el tejido cardíaco que depende de ese flujo comienza a morir por falta de oxígeno.</p>
+                </div>
+                
+                <div className="effect-item">
+                    <h3>Dolor torácico intenso (angina de pecho o dolor de infarto)</h3>
+                    <p>Sensación de opresión en el pecho, que puede irradiarse al brazo izquierdo, mandíbula o espalda.</p>
+                </div>
+                
+                <div className="effect-item">
+                    <h3>Arritmias</h3>
+                    <p>El daño al tejido cardíaco puede alterar el ritmo normal del corazón, causando latidos irregulares o incluso paro cardíaco.</p>
+                </div>
+                
+                <div className="effect-item">
+                    <h3>Falla cardíaca</h3>
+                    <p>Si una parte del corazón queda dañada de forma permanente, el músculo puede debilitarse y no bombear bien la sangre.</p>
+                </div>
+                
+                <div className="effect-item">
+                    <h3>Muerte súbita</h3>
+                    <p>En casos severos, la trombosis coronaria puede llevar a una parada cardíaca inmediata.</p>
+                </div>
             </div>
+        </section>
+    </div>
+</div>
         </div>
     );
 };
