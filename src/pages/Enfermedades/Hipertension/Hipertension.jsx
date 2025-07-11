@@ -3,7 +3,13 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useRef, useState } from "react";
 import Heart2 from "../../models3d/Heart2";
+import Heart2afa from "../../models3d/Heart2afa";
+import Heart3afa from "../../models3d/Heart3afa";
 import Lights2 from "../../../lights/lights2";
+import Lights2afa from "../../../lights/lights2afa";
+import Title1 from "../../../texts/Title1";
+import Staging1 from "../../../staging/Staging1"; // Import the staging component
+import Staging2 from "../../../staging/Staging2"; // Import the staging component
 
 const Hipertension = () => {
     // Referencia para la sección a la que se desplazará
@@ -23,7 +29,7 @@ const Hipertension = () => {
             setMensajeVisible(false);
         }
     };
-
+    
     return (
         <div style={{ position: "relative", width: "100%", height: "100vh" }}>
             {/* Mensaje superpuesto */}
@@ -47,8 +53,8 @@ const Hipertension = () => {
                     Haz clic para interactuar
                 </div>
             )}
-
-            <h1>Hipertension</h1>
+            <h1> Hipertension </h1>
+            
             <Canvas
                 camera={{ position: [2, 0, 5] }}
                 style={{ height: "420px" }} // Adjust the height here
@@ -58,9 +64,15 @@ const Hipertension = () => {
                 <OrbitControls enableZoom={true} />
                 <ambientLight intensity={0.7} />
                 <directionalLight position={[5, 5, 10]} intensity={1} />
+
+                
                 <mesh>
+                    <Staging2 />
                     <Heart2 />
+                    
+                    
                 </mesh>
+               
             </Canvas>
 
             {/* Sección a la que se desplazará */}
@@ -78,6 +90,24 @@ const Hipertension = () => {
                     </p>
                 </div>
             </div>
+
+            <Canvas
+                camera={{ position: [2, 0, 5] }}
+                style={{ height: "420px" }} // Adjust the height here
+                onClick={manejarClick}
+            >
+                <Lights2afa />
+                <OrbitControls enableZoom={true} />
+                <ambientLight intensity={0.7} />
+                <directionalLight position={[5, 5, 10]} intensity={1} />
+                <mesh>
+                    <Title1 title="Arterias en Azul" />
+                    <Staging1 />
+                    <Heart2afa />
+                </mesh>
+            </Canvas>
+
+            
             <div className="cuadroAzulHiper">
             <div className="cardHiper">
                     <h2>Sintomas  </h2>
@@ -91,6 +121,32 @@ const Hipertension = () => {
 
 
             </div>
+
+            <Canvas
+                camera={{ position: [2, 0, 5] }}
+                style={{ height: "420px" }} // Adjust the height here
+                onClick={manejarClick}
+            >
+                <Lights2 />
+                <OrbitControls enableZoom={true} />
+                <ambientLight intensity={0.7} />
+                <directionalLight position={[5, 5, 10]} intensity={1} />
+
+                
+                <mesh>
+                    <Staging2 />
+                    <Heart3afa />
+                    
+                    
+                </mesh>
+               
+            </Canvas>
+
+            
+
+           
+
+
         </div>
     );
 };
