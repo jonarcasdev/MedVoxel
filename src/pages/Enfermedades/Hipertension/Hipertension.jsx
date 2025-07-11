@@ -3,7 +3,10 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useRef, useState } from "react";
 import Heart2 from "../../models3d/Heart2";
+import Heart2afa from "../../models3d/Heart2afa";
 import Lights2 from "../../../lights/lights2";
+import Lights2afa from "../../../lights/lights2afa";
+
 
 const Hipertension = () => {
     // Referencia para la sección a la que se desplazará
@@ -78,6 +81,22 @@ const Hipertension = () => {
                     </p>
                 </div>
             </div>
+
+            <Canvas
+                camera={{ position: [2, 0, 5] }}
+                style={{ height: "420px" }} // Adjust the height here
+                onClick={manejarClick}
+            >
+                <Lights2afa />
+                <OrbitControls enableZoom={true} />
+                <ambientLight intensity={0.7} />
+                <directionalLight position={[5, 5, 10]} intensity={1} />
+                <mesh>
+                    <Heart2afa />
+                </mesh>
+            </Canvas>
+
+            
             <div className="cuadroAzulHiper">
             <div className="cardHiper">
                     <h2>Sintomas  </h2>
