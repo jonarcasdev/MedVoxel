@@ -3,25 +3,26 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useRef, useState } from "react";
 import Heart2 from "../../models3d/Heart2";
+import Heart2_1 from "../../models3d/heart2_1.jsx"; // <-- nuevo modelo
 import Lights2 from "../../../lights/lights2";
 
 const Hipertension = () => {
-    // Referencia para la sección a la que se desplazará
     const leerMas = useRef(null);
-
-    // Estado para manejar la visibilidad del mensaje
     const [mensajeVisible, setMensajeVisible] = useState(true);
+    const [usarNuevoModelo, setUsarNuevoModelo] = useState(false); // <-- nuevo estado
 
-    // Función para manejar el scroll
     const handleScroll = () => {
         leerMas.current.scrollIntoView({ behavior: "smooth" });
     };
 
-    // Función para manejar el clic en el canvas
     const manejarClick = () => {
         if (mensajeVisible) {
             setMensajeVisible(false);
         }
+    };
+
+    const cambiarModelo = () => {
+        setUsarNuevoModelo(prev => !prev);
     };
 
     return (
@@ -41,17 +42,35 @@ const Hipertension = () => {
                         zIndex: 10,
                     }}
                 >
-                    
-                    *Manten click izquiero para rotar la camara <br/>
-                    *Rueda del raton para acercar o alejar <br/>
+                    *Manten clic izquiero para rotar la cámara <br />
+                    *Rueda del ratón para acercar o alejar <br />
                     Haz clic para interactuar
                 </div>
             )}
 
-            <h1>Hipertension</h1>
+            <h1>Hipertensión</h1>
+
+            <button
+                onClick={cambiarModelo}
+                style={{
+                    position: "absolute",
+                    top: "15px",
+                    right: "15px",
+                    zIndex: 11,
+                    padding: "10px 15px",
+                    backgroundColor: "#800020",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "8px",
+                    cursor: "pointer"
+                }}
+            >
+                Cambiar modelo 3D
+            </button>
+
             <Canvas
                 camera={{ position: [2, 0, 5] }}
-                style={{ height: "420px" }} // Adjust the height here
+                style={{ height: "420px" }}
                 onClick={manejarClick}
             >
                 <Lights2 />
@@ -59,7 +78,7 @@ const Hipertension = () => {
                 <ambientLight intensity={0.7} />
                 <directionalLight position={[5, 5, 10]} intensity={1} />
                 <mesh>
-                    <Heart2 />
+                    {usarNuevoModelo ? <Heart2_1 /> : <Heart2 />}
                 </mesh>
             </Canvas>
 
@@ -78,18 +97,17 @@ const Hipertension = () => {
                     </p>
                 </div>
             </div>
+
             <div className="cuadroAzulHiper">
-            <div className="cardHiper">
-                    <h2>Sintomas  </h2>
+                <div className="cardHiper">
+                    <h2>Síntomas</h2>
                     <p style={{ textAlign: "justify" }}>
-                    La mayoría de las personas con hipertensión arterial no experimentan 
-                    síntomas evidentes. En algunos casos, la hipertensión puede causar síntomas 
-                    como dolor de cabeza, mareos, dificultad para respirar o sangrado nasal. Sin embargo, 
-                    estos síntomas suelen aparecer cuando la presión arterial es muy alta. 
+                        La mayoría de las personas con hipertensión arterial no experimentan
+                        síntomas evidentes. En algunos casos, la hipertensión puede causar síntomas
+                        como dolor de cabeza, mareos, dificultad para respirar o sangrado nasal. Sin embargo,
+                        estos síntomas suelen aparecer cuando la presión arterial es muy alta.
                     </p>
                 </div>
-
-
             </div>
         </div>
     );
