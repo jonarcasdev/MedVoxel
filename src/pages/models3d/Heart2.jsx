@@ -6,10 +6,9 @@ const Heart2 = () => {
     const heartModel = useGLTF('/models-3d/heart2.glb');
     const heartRef = useRef();
 
-    // Rotate the model on each frame
     useFrame(() => {
         if (heartRef.current) {
-            heartRef.current.rotation.y += 0.01; // Adjust the speed of rotation here
+            heartRef.current.rotation.y += 0.01;
         }
     });
 
@@ -22,4 +21,4 @@ const Heart2 = () => {
 
 export default Heart2;
 
-useGLTF.preload('/models/heart2.glb');
+useGLTF.preload('/models-3d/heart2.glb'); 
