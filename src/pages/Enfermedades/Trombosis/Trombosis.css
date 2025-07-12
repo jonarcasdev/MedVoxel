@@ -2,13 +2,17 @@ h1{
     color: black;
 }
 
-
+/* Estilo general para todo el texto */
+.trombosis-container, .trombosis-container p, .trombosis-container li {
+    color: #000000;
+}
 
 .trombosis-container {
   padding: 1.5rem;
   max-width: 900px;
   margin: 0 auto;
   line-height: 1.6;
+  color: #000000;
 }
 
 .trombosis-section {
@@ -31,10 +35,12 @@ h1{
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  color: #000000;
 }
 
 .section-content {
   font-size: 1.1rem;
+  color: #000000;
 }
 
 .causes-list {
@@ -67,6 +73,7 @@ h1{
   border-radius: 8px;
   padding: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #000000;
 }
 
 .effect-item:hover {
@@ -80,6 +87,10 @@ h1{
   margin-bottom: 0.75rem;
 }
 
+.effect-item p {
+  color: #000000;
+}
+
 @media (max-width: 768px) {
   .effects-container {
     grid-template-columns: 1fr;
@@ -89,9 +100,9 @@ h1{
 /* Añade o modifica estos estilos en tu archivo CSS */
 
 .cuadro2 {
-  min-height: 100vh; /* Asegura altura mínima igual a la ventana */
-  padding-bottom: 5rem; /* Aumenta el espacio en la parte inferior */
-  margin-bottom: 3rem; /* Añade margen adicional al final */
+  min-height: 350vh; /* Aumenta la altura mínima para hacer el fondo más largo */
+  padding-bottom: 8rem; /* Aumenta el espacio en la parte inferior */
+  margin-bottom: 1rem; /* Añade más margen adicional al final */
   background-color: #FC0848; /* Color de fondo opcional */
   position: relative;
   overflow: hidden; /* Evita desbordamiento si hay contenido flotante */
@@ -115,4 +126,463 @@ h1{
 .causes-list li strong {
   color: #000000; /* Asegura que el texto en negrita también sea negro */
   font-weight: bold;
+}
+
+/* Contenedor del Canvas con posición relativa */
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    z-index: 1; /* Capa baja para que quede detrás del menú */
+}
+
+/* Estilo específico para el segundo canvas con ambiente */
+.canvas-environment {
+    background: linear-gradient(
+        135deg,
+        #1a1a2e 0%,
+        #16213e 25%,
+        #0f3460 50%,
+        #533a71 75%,
+        #2c1810 100%
+    );
+    border-radius: 12px;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(74, 144, 226, 0.2),
+        inset 0 0 15px rgba(74, 144, 226, 0.1);
+    overflow: hidden;
+    margin-top: 2rem;
+    border: 1px solid rgba(74, 144, 226, 0.3);
+}
+
+.canvas-environment:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 35px rgba(0, 0, 0, 0.5),
+        0 0 50px rgba(74, 144, 226, 0.3),
+        inset 0 0 20px rgba(74, 144, 226, 0.15);
+    transition: all 0.3s ease;
+}
+
+.canvas-environment::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 15% 15%, rgba(74, 144, 226, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(255, 138, 128, 0.1) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.canvas-environment canvas {
+    position: relative;
+    z-index: 2;
+}
+
+/* Título especial para el segundo canvas */
+.canvas-environment .heart-title-3d {
+    background: linear-gradient(135deg, #4a90e2, #8e44ad);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 15px;
+    box-shadow: 
+        0 4px 20px rgba(74, 144, 226, 0.4),
+        0 0 25px rgba(74, 144, 226, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: float3d 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 10;
+    filter: drop-shadow(0 0 15px rgba(74, 144, 226, 0.5));
+}
+
+.canvas-environment .heart-title-3d h2 {
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+/* Interfaz de instrucciones superpuesta */
+.instructions-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2; /* Capa baja para que quede detrás del menú */
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+
+.instructions-content {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.instructions-content h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.instructions-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instructions-content li {
+    padding: 0.3rem 0;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.instructions-content li:last-child {
+    border-bottom: none;
+}
+
+.instructions-content strong {
+    color: #ffeb3b;
+    font-weight: 600;
+}
+
+.click-instruction {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: #ffeb3b;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.instructions-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instructions-content li {
+    padding: 0.3rem 0;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.instructions-content li:last-child {
+    border-bottom: none;
+}
+
+.instructions-content strong {
+    color: #ffeb3b;
+    font-weight: 600;
+}
+
+.click-instruction {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: #ffeb3b;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+/* Estilos para elementos HTML 3D */
+.heart-html-3d {
+    position: relative;
+    pointer-events: auto;
+    z-index: 1; /* Capa baja para que quede detrás del menú */
+}
+
+.heart-info-button {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    transition: all 0.3s ease;
+    animation: pulse3d 2s infinite;
+    z-index: 1; /* Capa baja para que quede detrás del menú */
+    position: relative;
+}
+
+.heart-info-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+    background: linear-gradient(135deg, #ee5a52, #ff6b6b);
+}
+
+.heart-info-button:active {
+    transform: scale(0.95);
+}
+
+@keyframes pulse3d {
+    0% { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
+    50% { box-shadow: 0 4px 20px rgba(255, 107, 107, 0.6); }
+    100% { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
+}
+
+.heart-info-popup {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 200px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.3s ease-out;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1; /* Capa baja para que quede detrás del menú */
+}
+
+.heart-info-popup h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #ff6b6b;
+    text-align: center;
+}
+
+.heart-info-popup p {
+    margin: 5px 0;
+    font-size: 12px;
+    text-align: center;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.heart-title-3d {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: float3d 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.heart-title-3d h2 {
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes float3d {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Estilos para la sección de síntomas */
+.symptoms-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.symptom-item {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #d32f2f;
+    transition: all 0.3s ease;
+    color: #000000;
+}
+
+.symptom-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.symptom-item h3 {
+    color: #d32f2f;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.symptom-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.symptom-item li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(211, 47, 47, 0.1);
+    position: relative;
+    padding-left: 1.5rem;
+    color: #000000;
+}
+
+.symptom-item li:last-child {
+    border-bottom: none;
+}
+
+.symptom-item li:before {
+    content: "•";
+    color: #d32f2f;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.warning-box {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.warning-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmerWarning 3s infinite;
+}
+
+@keyframes shimmerWarning {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.warning-box h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.warning-box p {
+    margin: 1rem 0;
+    line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.warning-box strong {
+    color: #ffeb3b;
+    font-weight: 700;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .instructions-overlay {
+        top: 10px;
+        right: 10px;
+        width: 200px;
+    }
+    
+    .instructions-content {
+        padding: 0.8rem;
+    }
+    
+    .instructions-content h3 {
+        font-size: 0.9rem;
+    }
+    
+    .instructions-content li {
+        font-size: 0.7rem;
+    }
+    
+    .heart-info-button {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .heart-info-popup {
+        min-width: 150px;
+        padding: 10px;
+    }
+    
+    .heart-info-popup h3 {
+        font-size: 14px;
+    }
+    
+    .heart-info-popup p {
+        font-size: 10px;
+    }
+    
+    .heart-title-3d h2 {
+        font-size: 14px;
+    }
+    
+    .symptoms-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .symptom-item {
+        padding: 1rem;
+    }
+    
+    .symptom-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    .warning-box {
+        padding: 1.5rem;
+    }
+    
+    .warning-box h3 {
+        font-size: 1.2rem;
+    }
 }

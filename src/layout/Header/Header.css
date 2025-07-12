@@ -49,6 +49,13 @@ nav {
     gap: 20px; /* Espacia los enlaces */
 }
 
+/* Nuevo contenedor para nav y auth-buttons */
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Espacio entre el menú y los botones */
+}
+
 nav a {
     position: relative; /* Asegúrate de que esta propiedad esté presente */
     font-size: 21px;
@@ -97,6 +104,8 @@ nav a:hover::after {
     border-radius: 5px;
     padding: 10px 0;
     z-index: 20;
+    min-width: 150px; /* Hace el dropdown más ancho */
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
 }
 
 /* Estilo de los enlaces dentro del menú */
@@ -149,4 +158,74 @@ nav a:hover::after {
 
 .dropdown-menu a:hover::after {
     width: 80%; /* La línea ocupa el 80% del ancho al hacer hover */
+}
+
+/* Contenedor de los botones de autenticación */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Estilo base para los botones de autenticación */
+.auth-buttons a {
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    display: inline-block;
+}
+
+/* Botón de Iniciar sesión - estilo outline */
+.login-btn {
+    color: #ffffff !important;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+}
+
+.login-btn:hover {
+    background-color: #ffffff;
+    color: #000000 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Botón de Registrarse - estilo filled */
+.register-btn {
+    color: #ffffff !important;
+    background-color: #FC0848;
+    border: 2px solid #FC0848;
+}
+
+.register-btn:hover {
+    background-color: #e6073f;
+    border-color: #e6073f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(252, 8, 72, 0.3);
+}
+
+/* Remover el efecto de línea para los botones de autenticación */
+.auth-buttons a::after {
+    display: none;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .auth-buttons {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .auth-buttons a {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
 }

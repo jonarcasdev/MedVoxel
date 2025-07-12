@@ -3,13 +3,19 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useRef, useState } from "react";
 import Heart2 from "../../models3d/Heart2";
-import Heart2_1 from "../../models3d/heart2_1.jsx"; // <-- nuevo modelo
+import Heart2_1 from "../../models3d/heart2_1.jsx";
+import Heart2afa from "../../models3d/Heart2afa";
+import Heart3afa from "../../models3d/Heart3afa";
 import Lights2 from "../../../lights/lights2";
+import Lights2afa from "../../../lights/lights2afa";
+import Title1 from "../../../texts/Title1";
+import Staging1 from "../../../staging/Staging1";
+import Staging2 from "../../../staging/Staging2";
 
 const Hipertension = () => {
     const leerMas = useRef(null);
     const [mensajeVisible, setMensajeVisible] = useState(true);
-    const [usarNuevoModelo, setUsarNuevoModelo] = useState(false); // <-- nuevo estado
+    const [usarNuevoModelo, setUsarNuevoModelo] = useState(false);
 
     const handleScroll = () => {
         leerMas.current.scrollIntoView({ behavior: "smooth" });
@@ -68,6 +74,7 @@ const Hipertension = () => {
                 Cambiar modelo 3D
             </button>
 
+            {/* Primer Canvas */}
             <Canvas
                 camera={{ position: [2, 0, 5] }}
                 style={{ height: "420px" }}
@@ -82,7 +89,7 @@ const Hipertension = () => {
                 </mesh>
             </Canvas>
 
-            {/* Sección a la que se desplazará */}
+            {/* Sección de contenido */}
             <div className="cuadroHiper" ref={leerMas}>
                 <div className="cardHiper">
                     <h2>Causas </h2>
@@ -98,6 +105,24 @@ const Hipertension = () => {
                 </div>
             </div>
 
+            {/* Segundo Canvas */}
+            <Canvas
+                camera={{ position: [2, 0, 5] }}
+                style={{ height: "420px" }}
+                onClick={manejarClick}
+            >
+                <Lights2afa />
+                <OrbitControls enableZoom={true} />
+                <ambientLight intensity={0.7} />
+                <directionalLight position={[5, 5, 10]} intensity={1} />
+                <mesh>
+                    <Title1 title="Arterias en Azul" />
+                    <Staging1 />
+                    <Heart2afa />
+                </mesh>
+            </Canvas>
+
+            {/* Otra sección de contenido */}
             <div className="cuadroAzulHiper">
                 <div className="cardHiper">
                     <h2>Síntomas</h2>
@@ -109,6 +134,22 @@ const Hipertension = () => {
                     </p>
                 </div>
             </div>
+
+            {/* Tercer Canvas */}
+            <Canvas
+                camera={{ position: [2, 0, 5] }}
+                style={{ height: "420px" }}
+                onClick={manejarClick}
+            >
+                <Lights2 />
+                <OrbitControls enableZoom={true} />
+                <ambientLight intensity={0.7} />
+                <directionalLight position={[5, 5, 10]} intensity={1} />
+                <mesh>
+                    <Staging2 />
+                    <Heart3afa />
+                </mesh>
+            </Canvas>
         </div>
     );
 };
