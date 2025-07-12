@@ -26,20 +26,26 @@ const Header = () => {
             <div className="logo">
                 <img src="/Logo/Medvoxel-Logo.png" alt="Medvoxel Logo" className="logo-img" />
             </div>
-            <nav>
-                <a href="/">Inicio</a>
-                <div className="dropdown">
-                    <a href="/enfermedades" className="dropdown-toggle">Enfermedades</a>
-                    <div className="dropdown-menu">
-                        <a href="/enfermedades/trombosis">Trombosis</a>
-                        <a href="/enfermedades/tumor_cardiaco">Tumor Cardiaco</a>
-                        <a href="/enfermedades/arritmia">Arritmia</a>
-                        <a href="/enfermedades/hipertension">Hipertension</a>
+            <div className="nav-container">
+                <nav>
+                    <a href="/">Inicio</a>
+                    <div className="dropdown">
+                        <a href="/enfermedades" className="dropdown-toggle">Enfermedades</a>
+                        <div className="dropdown-menu">
+                            <a href="/enfermedades/trombosis">Trombosis</a>
+                            <a href="/enfermedades/tumor_cardiaco">Tumor Cardiaco</a>
+                            <a href="/enfermedades/arritmia">Arritmia</a>
+                            <a href="/enfermedades/hipertension">Hipertension</a>
+                        </div>
                     </div>
+                    <a href="/quiz">Quiz</a>
+                    <a href="/sobre-nosotros">Sobre nosotros</a>
+                </nav>
+                <div className="auth-buttons">
+                    <a href="/iniciar-sesion" className="login-btn">Iniciar sesión</a>
+                    <a href="/registrarse" className="register-btn">Registrarse</a>
                 </div>
-                <a href="/quiz">Quiz</a>
-                <a href="/sobre-nosotros">Sobre nosotros</a>
-            </nav>
+            </div>
         </header>
     );
 }; 
