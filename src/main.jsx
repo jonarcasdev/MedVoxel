@@ -8,7 +8,6 @@ import NotFound from './pages/not-found/NotFound.jsx'
 import Enfermedades from './pages/Enfermedades/Enfermedades.jsx'
 import Trombosis from './pages/Enfermedades/Trombosis/Trombosis.jsx'
 import Hipertension from './pages/Enfermedades/Hipertension/Hipertension.jsx'
-import Tumor_cardiaco from './pages/Enfermedades/Tumor_cardiaco/Tumor_cardiaco.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Layout from './layout/Layout.jsx'
 import Login from './pages/Crud/Login/Login.jsx'
@@ -24,7 +23,6 @@ createRoot(document.getElementById('root')).render(
         <Route path='/enfermedades' element={<Enfermedades />}>
           <Route path='/enfermedades/trombosis' element={<Trombosis />} />
           <Route path='/enfermedades/hipertension' element={<Hipertension />} />
-          <Route path='/enfermedades/tumor_cardiaco' element={<Tumor_cardiaco />} />
           <Route path='/enfermedades/arritmia' element={<Arritmia />} />
         </Route>
         <Route path='/about' element={<About />} />
