@@ -1,13 +1,16 @@
 import "./Hipertension.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Html } from "@react-three/drei";
 import { useRef, useState } from "react";
 import Heart2 from "../../models3d/Heart2";
 import Heart2afa from "../../models3d/Heart2afa";
 import Heart3afa from "../../models3d/Heart3afa";
+import Heart4afa from "../../models3d/Heart4afa";
 import Lights2 from "../../../lights/lights2";
 import Lights2afa from "../../../lights/lights2afa";
+import Lights3afa from "../../../lights/lights3afa";
 import Title1 from "../../../texts/Title1";
+import Title2 from "../../../texts/Title2";
 import Staging1 from "../../../staging/Staging1"; // Import the staging component
 import Staging2 from "../../../staging/Staging2"; // Import the staging component
 
@@ -59,41 +62,38 @@ const Hipertension = () => {
                 camera={{ position: [2, 0, 5] }}
                 style={{ height: "420px" }} // Adjust the height here
                 onClick={manejarClick}
-            >
-                <Lights2 />
-                <OrbitControls enableZoom={true} />
-                <ambientLight intensity={0.7} />
-                <directionalLight position={[5, 5, 10]} intensity={1} />
+                >
+                    <Lights2 />
+                    <OrbitControls enableZoom={true} />
+                    <ambientLight intensity={0.7} />
+                    <directionalLight position={[5, 5, 10]} intensity={1} />
 
-                
-                <mesh>
-                    <Staging2 />
-                    <Heart2 />
-                    
-                    
-                </mesh>
-               
-            </Canvas>
+                    <mesh>
+                        
+                        <Heart2 />
+                    </mesh>
+                    {/* Simple 3D HTML element */}
+                  
+                </Canvas>
 
-            {/* Sección a la que se desplazará */}
-            <div className="cuadroHiper" ref={leerMas}>
-                <div className="cardHiper">
-                    <h2>Causas </h2>
-                    <p style={{ textAlign: "justify" }}>
-                        La hipertensión arterial, o presión arterial alta,
-                        puede ser causada por una combinación de factores genéticos,
-                        estilo de vida y condiciones subyacentes. Factores de riesgo que
-                        contribuyen a la hipertensión incluyen antecedentes familiares, obesidad,
-                        falta de actividad física, dieta alta en sal y baja en potasio, consumo de
-                        alcohol y tabaco, entre otros. En algunos casos, la hipertensión es secundaria
-                        a otras enfermedades o condiciones, como problemas renales o endocrinos.
-                    </p>
+                <div className="cuadroHiper" ref={leerMas}>
+                    <div className="cardHiper">
+                        <h2>Causas </h2>
+                        <p style={{ textAlign: "justify" }}>
+                            La hipertensión arterial, o presión arterial alta,
+                            puede ser causada por una combinación de factores genéticos,
+                            estilo de vida y condiciones subyacentes. Factores de riesgo que
+                            contribuyen a la hipertensión incluyen antecedentes familiares, obesidad,
+                            falta de actividad física, dieta alta en sal y baja en potasio, consumo de
+                            alcohol y tabaco, entre otros. En algunos casos, la hipertensión es secundaria
+                            a otras enfermedades o condiciones, como problemas renales o endocrinos.
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <Canvas
-                camera={{ position: [2, 0, 5] }}
-                style={{ height: "420px" }} // Adjust the height here
+                <Canvas
+                    camera={{ position: [2, 0, 5] }}
+                    style={{ height: "420px" }} // Adjust the height here
                 onClick={manejarClick}
             >
                 <Lights2afa />
@@ -127,7 +127,7 @@ const Hipertension = () => {
                 style={{ height: "420px" }} // Adjust the height here
                 onClick={manejarClick}
             >
-                <Lights2 />
+                <Lights3afa />
                 <OrbitControls enableZoom={true} />
                 <ambientLight intensity={0.7} />
                 <directionalLight position={[5, 5, 10]} intensity={1} />
@@ -142,11 +142,43 @@ const Hipertension = () => {
                
             </Canvas>
 
-            
+            <div className="cuadroHiper" ref={leerMas}>
+                <div className="cardHiper">
+                    <h2>Tratamiento  </h2>
+                    <p style={{ textAlign: "justify" }}>
+                       El tratamiento de la hipertensión se centra en reducir la presión arterial para prevenir 
+                       complicaciones graves como enfermedades cardíacas, accidentes cerebrovasculares y daño renal.
+                        Las estrategias incluyen cambios en el estilo de vida y, si es necesario, medicamentos. 
+                    </p>
+                </div>
+            </div>
 
-           
 
+            <Canvas
+                camera={{ position: [2, 0, 5] }}
+                style={{ height: "420px" }} // Adjust the height here
+                onClick={manejarClick}
+            >
+                <Lights2afa />
+                <OrbitControls enableZoom={true} />
+                <ambientLight intensity={0.7} />
+                <directionalLight position={[5, 5, 10]} intensity={1} />
 
+                
+
+                
+                <mesh>
+                    <Staging2 />
+                    <Heart4afa />
+
+                    <Title2 title="Vista interna de una arteria" />
+                    
+                    
+                </mesh>
+               
+            </Canvas>
+
+        
         </div>
     );
 };
