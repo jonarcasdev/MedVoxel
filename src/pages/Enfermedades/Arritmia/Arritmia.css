@@ -115,3 +115,25 @@
   margin-bottom: 16px;
   color: #1d3557;
 }
+.arritmia-info section {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.arritmia-info h2 {
+  color: #1d3557;
+  margin-bottom: 10px;
+}
+
+.arritmia-info ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.datos-curiosos {
+  background: #fff8e1;
+  border-left: 6px solid #ffb703;
+}
