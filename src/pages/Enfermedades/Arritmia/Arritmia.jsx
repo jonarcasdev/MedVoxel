@@ -1,102 +1,108 @@
 import "./Arritmia.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Stage } from "@react-three/drei";
-import { useRef, useState } from "react";
+import { OrbitControls, Stars, Sparkles } from "@react-three/drei";
+import { useRef, useState, useEffect } from "react";
 import Heart4 from "../../models3d/Heart4";
-import Heart2_1 from "../../models3d/heart2_1";
+import Heart2_1 from "../../models3d/Heart2_1";
+import Heart4_3 from "../../models3d/Heart4_3";
 
 const Arritmia = () => {
   const leerMas = useRef(null);
-  const [mensajeVisible, setMensajeVisible] = useState(true);
-  const [usarNuevoModelo, setUsarNuevoModelo] = useState(false);
+  const [mostrarInstrucciones, setMostrarInstrucciones] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
+  const [modeloIndex, setModeloIndex] = useState(0);
 
-  const handleScroll = () => {
-    leerMas.current.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const manejarClick = () => {
-    if (mensajeVisible) setMensajeVisible(false);
-  };
+  const modelos = [<Heart4 />, <Heart2_1 />, <Heart4_3 />];
 
   const cambiarModelo = () => {
-    setUsarNuevoModelo(prev => !prev);
+    setModeloIndex((prev) => (prev + 1) % modelos.length);
   };
+
+  const toggleInstrucciones = () => {
+    setMostrarInstrucciones((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "m") cambiarModelo();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <div className="arritmia-container">
-      {mensajeVisible && (
-        <div className="arritmia-info" onClick={manejarClick}>
-          <strong>¡Interactúa con el corazón 3D!</strong><br />
-          🖱 Mantén clic izquierdo para rotar <br />
-          🔍 Usa la rueda para acercar/alejar <br />
-          👉 Haz clic en cualquier parte para continuar
-        </div>
-      )}
+      <h1 className="arritmia-title">Arritmia</h1>
 
-      <h1 className="arritmia-title">Arritmia Cardíaca</h1>
-
-      <button onClick={cambiarModelo} className="arritmia-boton-modelo">
-        Cambiar modelo 3D
-      </button>
-
-      <div className="arritmia-canvas-container">
-        <Canvas camera={{ position: [2, 0, 5], fov: 45 }} onClick={manejarClick}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
-          <OrbitControls enableZoom={true} />
-          <Stage environment="city" intensity={0.6} shadows>
-            {usarNuevoModelo ? <Heart2_1 /> : <Heart4 />}
-          </Stage>
-        </Canvas>
+      {/* BOTONES SUPERIORES */}
+      <div className="arritmia-buttons">
+        <button onClick={toggleInstrucciones}>Mostrar instrucciones</button>
+        <button onClick={cambiarModelo}>Cambiar modelo</button>
+        <button onClick={() => setShowInfo((prev) => !prev)}>Mostrar info ❤️</button>
       </div>
 
-      <section className="arritmia-cuadro" ref={leerMas}>
-        <div className="arritmia-card">
-          <h2>¿Qué es una arritmia?</h2>
-          <p>
-            Una <strong>arritmia</strong> es una alteración del ritmo normal del corazón. Esto puede significar que el corazón late muy rápido
-            (taquicardia), muy lento (bradicardia), o de forma irregular. Aunque algunas arritmias son inofensivas, otras pueden ser
-            potencialmente mortales si afectan la capacidad del corazón para bombear sangre adecuadamente.
-          </p>
-        </div>
-      </section>
+      {/* CONTENEDOR DEL MODELO */}
+      <div className="arritmia-modelo">
+        <Canvas shadows camera={{ position: [2, 0, 5] }}>
+          <ambientLight intensity={0.6} />
+          <directionalLight position={[5, 5, 10]} intensity={1.5} castShadow />
+          <spotLight position={[2, 5, 5]} angle={0.3} penumbra={1} intensity={1.2} castShadow />
+          <OrbitControls enableZoom={true} />
+          <Stars />
+          <Sparkles count={60} scale={5} speed={1} />
 
-      <section className="arritmia-cuadro">
-        <div className="arritmia-card">
+          <mesh position={[0, 0, 0]}>
+            {modelos[modeloIndex]}
+          </mesh>
+        </Canvas>
+
+        {/* INSTRUCCIONES */}
+        {mostrarInstrucciones && (
+          <div className="arritmia-mensaje">
+            <strong>Instrucciones:</strong><br />
+            * Mantén clic izquierdo para rotar<br />
+            * Usa la rueda del ratón para acercar o alejar<br />
+            * Presiona <strong>M</strong> o haz clic en el botón para cambiar el modelo
+          </div>
+        )}
+
+        {/* INFO */}
+        {showInfo && (
+          <div className="arritmia-info-box">
+            <strong>Latido activo ❤️</strong><br />
+            El corazón presenta un ritmo animado<br />
+            simulando el latido normal.
+          </div>
+        )}
+      </div>
+
+      {/* TEXTO INFORMATIVO */}
+      <div className="arritmia-info" ref={leerMas}>
+        <section>
           <h2>Causas</h2>
-          <ul>
-            <li>Enfermedad coronaria o insuficiencia cardíaca</li>
-            <li>Desequilibrios electrolíticos (potasio, sodio, calcio)</li>
-            <li>Infarto previo o cicatrices cardíacas</li>
-            <li>Estilo de vida: estrés, alcohol, tabaco o drogas</li>
-            <li>Factores genéticos o congénitos</li>
-          </ul>
-        </div>
-      </section>
+          <p>
+            Las arritmias pueden ser causadas por diversas condiciones como enfermedad cardíaca,
+            desequilibrios electrolíticos, lesiones del corazón, estrés o sustancias como cafeína y alcohol.
+            Algunas son hereditarias o pueden presentarse sin causa clara.
+          </p>
+        </section>
 
-      <section className="arritmia-cuadro-azul">
-        <div className="arritmia-card">
-          <h2>Síntomas comunes</h2>
-          <ul>
-            <li>Palpitaciones o sensación de aleteo</li>
-            <li>Mareos, debilidad o desmayos</li>
-            <li>Fatiga excesiva o dificultad para respirar</li>
-            <li>Dolor en el pecho o ansiedad</li>
-            <li>Ausencia de síntomas (descubierta por ECG)</li>
-          </ul>
-        </div>
-      </section>
+        <section>
+          <h2>Síntomas</h2>
+          <p>
+            Los síntomas pueden incluir palpitaciones, latidos irregulares o acelerados, sensación de aleteo,
+            mareo, debilidad, fatiga, desmayos o dolor en el pecho. Algunas personas no presentan síntomas.
+          </p>
+        </section>
 
-      <section className="arritmia-cuadro">
-        <div className="arritmia-card">
+        <section>
           <h2>Diagnóstico y tratamiento</h2>
           <p>
-            El diagnóstico incluye exámenes como el <strong>electrocardiograma (ECG)</strong>, monitores Holter, y pruebas de esfuerzo.
-            El tratamiento depende del tipo y severidad: desde cambios de estilo de vida y medicamentos hasta procedimientos como la
-            cardioversión, ablación o implantación de marcapasos.
+            El diagnóstico se realiza mediante electrocardiogramas (ECG), Holter o estudios electrofisiológicos.
+            El tratamiento puede incluir medicamentos, cardioversión, ablación o marcapasos, según la gravedad.
           </p>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 };
