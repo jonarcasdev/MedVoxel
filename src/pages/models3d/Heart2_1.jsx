@@ -1,12 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
 const Heart2_1 = (props) => {
   const { scene } = useGLTF('/models-3d/Heart2_1.glb');
   const heartRef = useRef();
-
   const baseScale = 0.9;
+
+  useEffect(() => {
+    // Mejorar materiales (brillo y detalle)
+    scene.traverse((child) => {
+      if (child.isMesh && child.material) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+        child.material.metalness = 0.4;
+        child.material.roughness = 0.3;
+      }
+    });
+  }, [scene]);
 
   useFrame(() => {
     if (heartRef.current) {
@@ -25,5 +36,4 @@ const Heart2_1 = (props) => {
 };
 
 useGLTF.preload('/models-3d/Heart2_1.glb');
-
 export default Heart2_1;

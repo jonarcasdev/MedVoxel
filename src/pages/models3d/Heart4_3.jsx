@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
@@ -8,12 +8,20 @@ const Heart4_3 = (props) => {
 
   const baseScale = 0.9;
 
+  useEffect(() => {
+    // Aumentar brillo a todos los materiales
+    Object.values(materials).forEach((mat) => {
+      mat.metalness = 0.4;
+      mat.roughness = 0.3;
+    });
+  }, [materials]);
+
   useFrame(() => {
     const t = performance.now() * 0.002;
     const scale = 1 + Math.sin(t) * 0.1;
     if (meshGroupRef.current) {
       meshGroupRef.current.scale.setScalar(baseScale * scale);
-      meshGroupRef.current.rotation.y += 0.002; // rotación suave
+      meshGroupRef.current.rotation.y += 0.002;
     }
   });
 
@@ -42,5 +50,4 @@ const Heart4_3 = (props) => {
 };
 
 useGLTF.preload('/models-3d/Heart4_3.glb');
-
 export default Heart4_3;
