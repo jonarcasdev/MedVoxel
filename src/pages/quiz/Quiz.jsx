@@ -3,18 +3,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import questions from "./questions";
 import correctSound from "../../assets/correct.mp3";
 import incorrectSound from "../../assets/incorrect.mp3";
+import { guardarResultadoQuiz } from "../../services/quizService";
+import { useAuth } from "../../context/AuthContext";
 import "./Quiz.css";
 
 const Quiz = () => {
+  const { user } = useAuth();
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [showResult, setShowResult] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [showResult, setShowResult] = useState(false);
   const [totalTime, setTotalTime] = useState(0);
   const [questionTime, setQuestionTime] = useState(0);
   const [bestScore, setBestScore] = useState(
-    localStorage.getItem("bestScore") || 0
+    Number(localStorage.getItem("bestScore")) || 0
   );
 
   const totalTimer = useRef(null);
@@ -37,6 +41,8 @@ const Quiz = () => {
     return () => clearInterval(questionTimer.current);
   }, [currentIndex]);
 
+  const formatTime = (seconds) => `${Math.floor(seconds / 60)}m ${seconds % 60}s`;
+
   const handleAnswer = (option) => {
     if (selectedOption) return;
 
@@ -53,6 +59,7 @@ const Quiz = () => {
 
     setTimeout(() => {
       const next = currentIndex + 1;
+      const finalCorrect = score + (isCorrect ? 1 : 0);
       if (next < questions.length) {
         setCurrentIndex(next);
         setSelectedOption(null);
@@ -63,31 +70,34 @@ const Quiz = () => {
         clearInterval(questionTimer.current);
         setShowResult(true);
 
-        // Guardar mejor puntaje
-        if (score + (isCorrect ? 1 : 0) > bestScore) {
-          localStorage.setItem("bestScore", score + (isCorrect ? 1 : 0));
-          setBestScore(score + (isCorrect ? 1 : 0));
+        // Guarda resultado en Firestore
+        guardarResultadoQuiz({
+          usuario: user?.displayName || user?.email || "Anónimo",
+          puntos: finalCorrect,
+          tiempo: formatTime(totalTime)
+        });
+
+        // Actualiza mejor puntaje local
+        if (finalCorrect > bestScore) {
+          localStorage.setItem("bestScore", finalCorrect);
+          setBestScore(finalCorrect);
         }
       }
     }, 1500);
   };
 
   const restartQuiz = () => {
-    setCurrentIndex(0);
+    clearInterval(totalTimer.current);
+    clearInterval(questionTimer.current);
     setScore(0);
-    setShowResult(false);
+    setCurrentIndex(0);
     setSelectedOption(null);
     setShowFeedback(false);
+    setShowResult(false);
     setTotalTime(0);
     setQuestionTime(0);
-
-    totalTimer.current = setInterval(() => {
-      setTotalTime((prev) => prev + 1);
-    }, 1000);
+    totalTimer.current = setInterval(() => setTotalTime((prev) => prev + 1), 1000);
   };
-
-  const formatTime = (seconds) =>
-    `${Math.floor(seconds / 60)}m ${seconds % 60}s`;
 
   return (
     <div className="quiz-container">
@@ -101,15 +111,13 @@ const Quiz = () => {
               Total: {formatTime(totalTime)} | Pregunta: {questionTime}s
             </span>
           </div>
-          <div className="progress-bar-container">
-  <div
-    className="progress-bar"
-    style={{
-      width: `${((currentIndex + 1) / questions.length) * 100}%`
-    }}
-  ></div>
-</div>
 
+          <div className="progress-bar-container">
+            <div
+              className="progress-bar"
+              style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+            />
+          </div>
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -152,9 +160,7 @@ const Quiz = () => {
       ) : (
         <div className="quiz-result">
           <h2>Resultado</h2>
-          <p>
-            Puntuación: {score} / {questions.length}
-          </p>
+          <p>Puntuación: {score} / {questions.length}</p>
           <p>Tiempo total: {formatTime(totalTime)}</p>
           <p>🏆 Mejor puntaje: {bestScore}</p>
           <button onClick={restartQuiz} className="restart-btn">

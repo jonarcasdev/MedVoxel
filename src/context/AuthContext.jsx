@@ -1,0 +1,30 @@
+import { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+
+// Crear el contexto
+const AuthContext = createContext();
+
+// Hook personalizado para usar el contexto
+export const useAuth = () => useContext(AuthContext);
+
+// Proveedor del contexto
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ user }}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};
