@@ -5,10 +5,8 @@ import { useRef, useState, useEffect } from "react";
 import Heart4 from "../../models3d/Heart4";
 import Heart2_1 from "../../models3d/Heart2_1";
 import Heart4_3 from "../../models3d/Heart4_3";
+import Heart4_4 from "../../models3d/Heart4_4";
 import LuisVid from "../../videos/luisvid";
-import Staging2 from "../../../staging/Staging2";
-
-
 
 const Arritmia = () => {
   const leerMas = useRef(null);
@@ -16,14 +14,10 @@ const Arritmia = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [modeloIndex, setModeloIndex] = useState(0);
 
-  const modelos = [<Heart4 />, <Heart2_1 />, <Heart4_3 />];
+  const modelos = [<Heart4 />, <Heart2_1 />, <Heart4_3 />, <Heart4_4 />];
 
   const cambiarModelo = () => {
     setModeloIndex((prev) => (prev + 1) % modelos.length);
-  };
-
-  const toggleInstrucciones = () => {
-    setMostrarInstrucciones((prev) => !prev);
   };
 
   useEffect(() => {
@@ -38,14 +32,24 @@ const Arritmia = () => {
     <div className="arritmia-container">
       <h1 className="arritmia-title">Arritmia</h1>
 
-      {/* BOTONES SUPERIORES */}
+      {/* BOTONES */}
       <div className="arritmia-buttons">
-        <button onClick={toggleInstrucciones}>Mostrar instrucciones</button>
+        <button
+          className={mostrarInstrucciones ? "activo" : ""}
+          onClick={() => setMostrarInstrucciones((prev) => !prev)}
+        >
+          {mostrarInstrucciones ? "Ocultar instrucciones" : "Mostrar instrucciones"}
+        </button>
         <button onClick={cambiarModelo}>Cambiar modelo</button>
-        <button onClick={() => setShowInfo((prev) => !prev)}>Mostrar info ❤️</button>
+        <button
+          className={showInfo ? "activo" : ""}
+          onClick={() => setShowInfo((prev) => !prev)}
+        >
+          {showInfo ? "Ocultar info ❤️" : "Mostrar info ❤️"}
+        </button>
       </div>
 
-      {/* CONTENEDOR DEL MODELO */}
+      {/* MODELO 3D */}
       <div className="arritmia-modelo">
         <Canvas shadows camera={{ position: [2, 0, 5] }}>
           <ambientLight intensity={0.6} />
@@ -54,10 +58,14 @@ const Arritmia = () => {
           <OrbitControls enableZoom={true} />
           <Stars />
           <Sparkles count={60} scale={5} speed={1} />
-          <mesh position={[0, 0, 0]}>
-            {modelos[modeloIndex]}
-          </mesh>
+          <mesh position={[0, 0, 0]}>{modelos[modeloIndex]}</mesh>
         </Canvas>
+
+        {/* TEXTO HTML SOBRE EL MODELO */}
+        <div className="texto-flotante-3d">
+          <div className="texto-principal">Latido Corazón</div>
+          <div className="texto-secundario">Modelo Experimental Luis Carabali</div>
+        </div>
 
         {/* INSTRUCCIONES */}
         {mostrarInstrucciones && (
@@ -79,7 +87,7 @@ const Arritmia = () => {
         )}
       </div>
 
-      {/* TEXTO INFORMATIVO ENRIQUECIDO */}
+      {/* TEXTO INFORMATIVO RESTAURADO */}
       <div className="arritmia-info" ref={leerMas}>
         <section className="intro-section">
           <h2>¿Qué es una arritmia?</h2>
@@ -142,6 +150,7 @@ const Arritmia = () => {
         </section>
       </div>
 
+      {/* VIDEO */}
       <div style={{ margin: "0 0 10px 0" }}>
         <Canvas
           camera={{ position: [0, 0, 5] }}
@@ -154,7 +163,7 @@ const Arritmia = () => {
           <OrbitControls enableZoom={true} />
         </Canvas>
         <div style={{ textAlign: "center", marginTop: "10px", fontWeight: "bold" }}>
-          Video explicativo: LuisVid
+          Video explicativo: LuisCarabali
         </div>
       </div>
     </div>

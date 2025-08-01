@@ -1,0 +1,28 @@
+{
+    "glyphs": {
+      " ": {},
+      "!": {
+        "x_min": 133,
+        "x_max": 378,
+        "ha": 512,
+        "o": "m 133 0 l 133 148 l 378 148 l 378 0 l 133 0 z m 133 512 l 133 1459 l 378 1459 l 378 512 l 133 512 z"
+      }
+    
+    },
+    "familyName": "Roboto",
+    "ascender": 1900,
+    "descender": -500,
+    "underlinePosition": -100,
+    "underlineThickness": 50,
+    "boundingBox": {
+      "yMin": -555,
+      "xMin": -1020,
+      "yMax": 2163,
+      "xMax": 1987
+    },
+    "resolution": 1000,
+    "original_font_information": {},
+    "cssFontWeight": "normal",
+    "cssFontStyle": "normal"
+  }
+  

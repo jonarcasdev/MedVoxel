@@ -12,6 +12,9 @@ import Arritmia from './pages/Enfermedades/Arritmia/Arritmia.jsx'
 import Login from './pages/Crud/Login/Login.jsx'
 import Register from './pages/Crud/Register/Register.jsx'
 import Dashboard from "./pages/Crud/Dashboard/Dashboard.jsx";
+import Texto3DTest from './Texto3DTest';
+
+
 
 
 
@@ -68,3 +71,12 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>
 )
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <Texto3DTest />
+  </React.StrictMode>
+);
+export default function App() {
+  return <Texto3DTest />;
+}

@@ -1,139 +1,38 @@
-.arritmia-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.arritmia-buttons button {
-  padding: 10px 18px;
-  border-radius: 10px;
-  background-color: #1d3557;
+.arritmia-buttons button.activo {
+  background-color: #e63946;
   color: white;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.2s;
 }
 
-.arritmia-buttons button:hover {
-  background-color: #457b9d;
-}
-
-.arritmia-modelo {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  background: #f5f5f5;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.arritmia-mensaje {
+.texto-flotante-3d {
   position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  background-color: white;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  max-width: 220px;
-  z-index: 10;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 20;
+  animation: flotar 3s ease-in-out infinite;
 }
 
-.arritmia-info-box {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  background-color: white;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  max-width: 220px;
-  z-index: 10;
-}
-.arritmia-mensaje {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  background-color: white;
-  color: black;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  max-width: 250px;
-  z-index: 10;
-}
-
-.arritmia-info-box {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  background-color: white;
-  color: black;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  max-width: 250px;
-  z-index: 10;
-}
-.arritmia-info {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #f1faee;
-  border-radius: 12px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: #1d3557;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-}
-
-.arritmia-info h2 {
-  font-size: 22px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+.texto-principal {
+  font-size: 28px;
+  font-weight: bold;
   color: #e63946;
-  border-bottom: 2px solid #e63946;
-  display: inline-block;
-  padding-bottom: 4px;
+  animation: latido 1.5s infinite;
 }
 
-.arritmia-info p {
-  font-size: 16px;
-  margin-bottom: 16px;
-  color: #1d3557;
-}
-.arritmia-info section {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 14px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.texto-secundario {
+  font-size: 18px;
+  color: #457b9d;
+  margin-top: 5px;
 }
 
-.arritmia-info h2 {
-  color: #1d3557;
-  margin-bottom: 10px;
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
-.arritmia-info ul {
-  padding-left: 20px;
-  list-style: disc;
-}
-
-.datos-curiosos {
-  background: #fff8e1;
-  border-left: 6px solid #ffb703;
+@keyframes flotar {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
 }
