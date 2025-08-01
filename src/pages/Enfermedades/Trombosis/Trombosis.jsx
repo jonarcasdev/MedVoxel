@@ -1,15 +1,11 @@
 import "./Trombosis.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, KeyboardControls, Html, Stars } from "@react-three/drei";
+import { OrbitControls, KeyboardControls, Html } from "@react-three/drei";
 
 import Heart1 from "../../models3d/Heart1";
 import { useRef, useState } from "react";
 import Lights from "../../../lights/lights";
 import SimpleEnvironment from "../../../lights/SimpleEnvironment";
-import JacVid from "../../videos/jacvid";
-import LuisVid from "../../videos/luisvid";
-
-
 
 // Componentes de iluminación específicos para cada canvas
 const SoftLighting = () => (
@@ -305,35 +301,12 @@ const Trombosis = () => {
             </button>
             {/* Sección a la que se desplazará */}
            <div className="cuadro2" ref={leerMas}>
-            <div className="trombosis-container">
+    <div className="trombosis-container">
         <section className="trombosis-section">
             <h2 className="section-title">🧠 ¿Qué es?</h2>
             <p className="section-content">
                 Es la formación de un coágulo dentro de una arteria del corazón, bloqueando parcial o totalmente el flujo sanguíneo al miocardio (músculo cardíaco). Generalmente ocurre en arterias ya afectadas por aterosclerosis (acumulación de placas de grasa).
-            </p>        
-
-             <KeyboardControls map={keyboardMap}>
-                    <Canvas
-                        
-                        camera={{
-                            position: [50, 8, 50],
-                            fov: 2,
-                        }}
-                    >
-                        <SoftLighting />
-                        <OrbitControls />
-                        <Stars />
-                        <group
-                            scale={[1,1,1]}
-                            
-                        >
-                            
-                            <JacVid />
-                        </group>
-                    </Canvas>
-                </KeyboardControls>
-
-            
+            </p>
         </section>
 
         <section className="trombosis-section">
@@ -410,8 +383,6 @@ const Trombosis = () => {
                     <strong>La trombosis coronaria es una emergencia médica. Si se sospecha, se debe buscar atención inmediata.</strong>
                 </p>
             </div>
-
-            
         </section>
 
         <section className="trombosis-section">
@@ -757,11 +728,7 @@ const Trombosis = () => {
                         </group>
                     </Canvas>
                 </KeyboardControls>
-
-                
             </div>
-
-
         </div>
     );
 };
