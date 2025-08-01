@@ -6,7 +6,6 @@ import Heart2 from "../../models3d/Heart2";
 import Heart2afa from "../../models3d/Heart2afa";
 import Heart3afa from "../../models3d/Heart3afa";
 import Heart4afa from "../../models3d/Heart4afa";
-import AfaVid from "../../videos/afavid";
 import Lights2 from "../../../lights/lights2";
 import Lights2afa from "../../../lights/lights2afa";
 import Lights3afa from "../../../lights/lights3afa";
@@ -189,38 +188,6 @@ const Hipertension = () => {
             </div>
 
             {renderModelo(Heart4afa, 2, <><Staging2 /><Title2 title="Vista interna de una arteria" /></>)}
-
-            <div className="cuadroAzulHiper">
-                <div className="cardHiper">
-                    <h2>Angioplastía Coronaria</h2>
-                    <p style={{ textAlign: "justify" }}>
-                       La angioplastía coronaria es un procedimiento para abrir arterias del corazón que están
-                        tapadas por grasa o placas. Se introduce un catéter con un pequeño balón que se infla en la 
-                        zona obstruida, empujando la placa contra las paredes de la arteria. Generalmente, se coloca un
-                         stent (malla metálica) para mantenerla abierta. Esto mejora el flujo de sangre al corazón, alivia el 
-                         dolor en el pecho y reduce el riesgo de infarto.
-                    </p>
-                </div>
-            </div>
-
-            {/* Canvas with AfaVid and Staging1 */}
-            <div style={{ margin: "0 0 10px 0" }}>
-                <Canvas
-                    camera={{ position: [0, 0, 5] }}
-                    style={{ height: "400px", width: "100%" }}
-                >
-                    <ambientLight intensity={0.7} />
-                    <directionalLight position={[5, 5, 10]} intensity={1} />
-                    <AfaVid />
-                    <Staging1 />
-                    <Title2 title="Video Explicativo" />
-                    <OrbitControls enableZoom={true} />
-                </Canvas>
-                <div style={{ textAlign: "center", marginTop: "10px", fontWeight: "bold" }}>
-                    Video explicativo: AfaVid
-                </div>
-            </div>
-            
         </div>
     );
 };
