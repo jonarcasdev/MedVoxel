@@ -5,10 +5,6 @@ import { useRef, useState, useEffect } from "react";
 import Heart4 from "../../models3d/Heart4";
 import Heart2_1 from "../../models3d/Heart2_1";
 import Heart4_3 from "../../models3d/Heart4_3";
-import LuisVid from "../../videos/luisvid";
-import Staging2 from "../../../staging/Staging2";
-
-
 
 const Arritmia = () => {
   const leerMas = useRef(null);
@@ -140,22 +136,6 @@ const Arritmia = () => {
             <li>Algunas arritmias no necesitan tratamiento si no causan síntomas.</li>
           </ul>
         </section>
-      </div>
-
-      <div style={{ margin: "0 0 10px 0" }}>
-        <Canvas
-          camera={{ position: [0, 0, 5] }}
-          style={{ height: "400px", width: "100%" }}
-        >
-          <ambientLight intensity={0.7} />
-          <directionalLight position={[5, 5, 10]} intensity={1} />
-          <Stars />
-          <LuisVid />
-          <OrbitControls enableZoom={true} />
-        </Canvas>
-        <div style={{ textAlign: "center", marginTop: "10px", fontWeight: "bold" }}>
-          Video explicativo: LuisVid
-        </div>
       </div>
     </div>
   );
